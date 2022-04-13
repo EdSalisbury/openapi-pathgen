@@ -1,0 +1,25 @@
+{
+  "summary": "Adds ${lname}",
+  "tags": ["${sname}s"],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/${sname}"
+        }
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "Successfully added ${lname}.",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/${sname}"
+          }
+        }
+      }
+    }
+  }
+}

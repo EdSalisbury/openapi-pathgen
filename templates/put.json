@@ -1,0 +1,27 @@
+{
+  "summary": "Replaces ${lname}",
+  "parameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "schema": {
+        "$ref": "#/components/schemas/uuid"
+      },
+      "required": true,
+      "description": "UUID of the ${lname} to replace"
+    }
+  ],
+  "tags": ["${sname}s"],
+  "responses": {
+    "200": {
+      "description": "Replaced ${lname}.",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/${sname}"
+          }
+        }
+      }
+    }
+  }
+}

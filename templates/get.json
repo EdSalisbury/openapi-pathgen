@@ -1,0 +1,27 @@
+{
+  "summary": "Gets single ${lname}",
+  "parameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "schema": {
+        "$ref": "#/components/schemas/uuid"
+      },
+      "required": true,
+      "description": "UUID of the ${lname} to get"
+    }
+  ],
+  "tags": ["${sname}s"],
+  "responses": {
+    "200": {
+      "description": "A single ${lname}.",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/${sname}"
+          }
+        }
+      }
+    }
+  }
+}

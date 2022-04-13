@@ -2,8 +2,9 @@
   "name": "openapi-pathgen",
   "version": "0.1.0",
   "description": "Generates OAS 3.x (FKA Swagger) Paths for REST APIs",
-  "main": "index.js",
+  "main": "index.mjs",
   "repository": "https://github.com/EdSalisbury/openapi-pathgen",
   "author": "Ed Salisbury",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }

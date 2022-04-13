@@ -1,0 +1,16 @@
+{
+  "summary": "Gets all ${lname}s",
+  "tags": ["${sname}s"],
+  "responses": {
+    "200": {
+      "description": "All ${lname}s.",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/${sname}s"
+          }
+        }
+      }
+    }
+  }
+}

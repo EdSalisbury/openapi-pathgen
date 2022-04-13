@@ -1,0 +1,27 @@
+{
+  "summary": "Updates ${lname}",
+  "parameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "schema": {
+        "$ref": "#/components/schemas/uuid"
+      },
+      "required": true,
+      "description": "UUID of the ${lname} to update"
+    }
+  ],
+  "tags": ["${sname}s"],
+  "responses": {
+    "200": {
+      "description": "Updated ${lname}.",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/${sname}"
+          }
+        }
+      }
+    }
+  }
+}
