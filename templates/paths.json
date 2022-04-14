@@ -1,14 +1,12 @@
 {
-	"paths": {
-    	"/${sname}s": {
-			"get": "${getAll}",
-			"post": "${post}"
-		},
-		"/${sname}s/{id}": {
-			"get": "${get}",
-			"put": "${put}",
-			"patch": "${patch}",
-			"delete": "${delete}"
-		}
-	}
+  "/${name}s": {
+    "get": "${getAll}",
+    "post": "${post}"
+  },
+  "/${name}s/{id}": {
+    "get": "${get}",
+    "put": "${put}",
+    "patch": "${patch}",
+    "delete": "${delete}"
+  }
 }

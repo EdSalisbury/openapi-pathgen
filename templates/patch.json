@@ -1,5 +1,5 @@
 {
-  "summary": "Updates ${lname}",
+  "summary": "Updates ${name}",
   "parameters": [
     {
       "in": "path",
@@ -8,20 +8,36 @@
         "$ref": "#/components/schemas/uuid"
       },
       "required": true,
-      "description": "UUID of the ${lname} to update"
+      "description": "UUID of the ${name} to update",
+      "example": "2bdbaae2-4922-46c8-9b4f-023e60163805"
     }
   ],
-  "tags": ["${sname}s"],
+  "tags": ["${name}s"],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/${name}Create"
+        }
+      }
+    }
+  },
   "responses": {
     "200": {
-      "description": "Updated ${lname}.",
+      "description": "Updated ${name} successfully.",
       "content": {
         "application/json": {
           "schema": {
-            "$ref": "#/components/schemas/${sname}"
+            "$ref": "#/components/schemas/${name}"
           }
         }
       }
+    },
+    "400": {
+      "$ref": "#/components/responses/badRequest"
+    },
+    "404": {
+      "$ref": "#/components/responses/notFound"
     }
   }
 }

@@ -6,33 +6,43 @@ import putJson from "./templates/put.json" assert { type: "json" };
 import patchJson from "./templates/patch.json" assert { type: "json" };
 import deleteJson from "./templates/delete.json" assert { type: "json" };
 
-const sname = "owner";
-const lname = "owner";
+if (process.argv.length < 4) {
+  console.error("Usage: openapi-pathgen <shortname> <longname>");
+  process.exit(1);
+}
 
-const getAllPath = replaceStrings(getAllJson, sname, lname);
-const postPath = replaceStrings(postJson, sname, lname);
-const getPath = replaceStrings(getJson, sname, lname);
-const putPath = replaceStrings(putJson, sname, lname);
-const patchPath = replaceStrings(patchJson, sname, lname);
-const deletePath = replaceStrings(deleteJson, sname, lname);
+const names = process.argv.slice(2);
 
-const pathsObj = replaceStrings(pathsJson, sname, lname);
-let pathsStr = JSON.stringify(pathsObj);
+let allPaths = {
+  paths: {},
+};
 
-pathsStr = pathsStr.replace('"${getAll}"', JSON.stringify(getAllPath));
-pathsStr = pathsStr.replace('"${post}"', JSON.stringify(postPath));
-pathsStr = pathsStr.replace('"${get}"', JSON.stringify(getPath));
-pathsStr = pathsStr.replace('"${put}"', JSON.stringify(putPath));
-pathsStr = pathsStr.replace('"${patch}"', JSON.stringify(patchPath));
-pathsStr = pathsStr.replace('"${delete}"', JSON.stringify(deletePath));
+names.forEach((name) => {
+  const getAllPath = replaceStrings(getAllJson, name);
+  const postPath = replaceStrings(postJson, name);
+  const getPath = replaceStrings(getJson, name);
+  const putPath = replaceStrings(putJson, name);
+  const patchPath = replaceStrings(patchJson, name);
+  const deletePath = replaceStrings(deleteJson, name);
+  const pathsObj = replaceStrings(pathsJson, name);
 
-const paths = JSON.parse(pathsStr);
+  let pathsStr = JSON.stringify(pathsObj);
 
-console.log(JSON.stringify(paths, null, 2));
+  pathsStr = pathsStr.replace('"${getAll}"', JSON.stringify(getAllPath));
+  pathsStr = pathsStr.replace('"${post}"', JSON.stringify(postPath));
+  pathsStr = pathsStr.replace('"${get}"', JSON.stringify(getPath));
+  pathsStr = pathsStr.replace('"${put}"', JSON.stringify(putPath));
+  pathsStr = pathsStr.replace('"${patch}"', JSON.stringify(patchPath));
+  pathsStr = pathsStr.replace('"${delete}"', JSON.stringify(deletePath));
 
-function replaceStrings(jsonObj, sname, lname) {
+  const newPaths = JSON.parse(pathsStr);
+  allPaths.paths = { ...allPaths.paths, ...newPaths };
+});
+
+console.log(JSON.stringify(allPaths, null, 2));
+
+function replaceStrings(jsonObj, name) {
   let template = JSON.stringify(jsonObj);
-  template = template.replaceAll("${sname}", sname);
-  template = template.replaceAll("${lname}", lname);
+  template = template.replaceAll("${name}", name);
   return JSON.parse(template);
 }

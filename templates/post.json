@@ -1,25 +1,28 @@
 {
-  "summary": "Adds ${lname}",
-  "tags": ["${sname}s"],
+  "summary": "Adds ${name}",
+  "tags": ["${name}s"],
   "requestBody": {
     "content": {
       "application/json": {
         "schema": {
-          "$ref": "#/components/schemas/${sname}"
+          "$ref": "#/components/schemas/${name}Create"
         }
       }
     }
   },
   "responses": {
     "201": {
-      "description": "Successfully added ${lname}.",
+      "description": "Added ${name} successfully.",
       "content": {
         "application/json": {
           "schema": {
-            "$ref": "#/components/schemas/${sname}"
+            "$ref": "#/components/schemas/${name}"
           }
         }
       }
+    },
+    "400": {
+      "$ref": "#/components/responses/badRequest"
     }
   }
 }

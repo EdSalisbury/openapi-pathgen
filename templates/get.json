@@ -1,5 +1,5 @@
 {
-  "summary": "Gets single ${lname}",
+  "summary": "Gets single ${name}",
   "parameters": [
     {
       "in": "path",
@@ -8,20 +8,24 @@
         "$ref": "#/components/schemas/uuid"
       },
       "required": true,
-      "description": "UUID of the ${lname} to get"
+      "description": "UUID of the ${name} to get",
+      "example": "b12b9265-5808-4849-9702-e1d1a7818d8a"
     }
   ],
-  "tags": ["${sname}s"],
+  "tags": ["${name}s"],
   "responses": {
     "200": {
-      "description": "A single ${lname}.",
+      "description": "A single ${name}.",
       "content": {
         "application/json": {
           "schema": {
-            "$ref": "#/components/schemas/${sname}"
+            "$ref": "#/components/schemas/${name}"
           }
         }
       }
+    },
+    "404": {
+      "$ref": "#/components/responses/notFound"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "summary": "Deletes ${lname}",
+  "summary": "Deletes ${name}",
   "parameters": [
     {
       "in": "path",
@@ -8,20 +8,17 @@
         "$ref": "#/components/schemas/uuid"
       },
       "required": true,
-      "description": "UUID of the ${lname} to delete"
+      "description": "UUID of the ${name} to delete",
+      "example": "e2b019e9-d456-43ef-bc6b-b7a2492e717a"
     }
   ],
-  "tags": ["${sname}s"],
+  "tags": ["${name}s"],
   "responses": {
-    "200": {
-      "description": "Deleted ${lname}.",
-      "content": {
-        "application/json": {
-          "schema": {
-            "$ref": "#/components/schemas/${sname}"
-          }
-        }
-      }
+    "204": {
+      "description": "Deleted ${name} successfully."
+    },
+    "404": {
+      "$ref": "#/components/responses/notFound"
     }
   }
 }

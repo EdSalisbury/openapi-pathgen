@@ -1,5 +1,5 @@
 {
-  "summary": "Replaces ${lname}",
+  "summary": "Replaces ${name}",
   "parameters": [
     {
       "in": "path",
@@ -8,20 +8,36 @@
         "$ref": "#/components/schemas/uuid"
       },
       "required": true,
-      "description": "UUID of the ${lname} to replace"
+      "description": "UUID of the ${name} to replace",
+      "example": "0482b4d7-e5ba-4273-bb8b-7d6e07deba19"
     }
   ],
-  "tags": ["${sname}s"],
+  "tags": ["${name}s"],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/${name}Create"
+        }
+      }
+    }
+  },
   "responses": {
     "200": {
-      "description": "Replaced ${lname}.",
+      "description": "Replaced ${name} successfully.",
       "content": {
         "application/json": {
           "schema": {
-            "$ref": "#/components/schemas/${sname}"
+            "$ref": "#/components/schemas/${name}"
           }
         }
       }
+    },
+    "400": {
+      "$ref": "#/components/responses/badRequest"
+    },
+    "404": {
+      "$ref": "#/components/responses/notFound"
     }
   }
 }

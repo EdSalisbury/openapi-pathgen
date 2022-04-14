@@ -1,13 +1,13 @@
 {
-  "summary": "Gets all ${lname}s",
-  "tags": ["${sname}s"],
+  "summary": "Gets all ${name}s",
+  "tags": ["${name}s"],
   "responses": {
     "200": {
-      "description": "All ${lname}s.",
+      "description": "All ${name}s.",
       "content": {
         "application/json": {
           "schema": {
-            "$ref": "#/components/schemas/${sname}s"
+            "$ref": "#/components/schemas/${name}s"
           }
         }
       }
